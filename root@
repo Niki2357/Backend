@@ -1,0 +1,21 @@
+import sqlite3
+import json
+
+#Query the database and return everything
+
+def post_activity():
+    
+    conn = sqlite3.connect('activity.db')
+
+    c = conn.cursor()
+    c.execute("INSERT INTO activity VALUES ('activity1')")
+    conn.commit()
+    
+    c.execute("SELECT * FROM activity")
+    items = c.fetchall()
+
+    return (json.dumps(items))
+ 
+
+    conn.close()
+
